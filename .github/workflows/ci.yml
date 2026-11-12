@@ -37,12 +37,12 @@ jobs:
 
       - name: Run Main Entry Point (Safe Mode)
         run: |
-          export PYTHONPATH=src
+          export PYTHONPATH=.
           python main.py || python src/dashboard.py || python src/master_pipeline.py || echo "Pipeline execution skipped"
 
       - name: Run Pytest Suite (Safe Discovery)
         run: |
-          export PYTHONPATH=src
+          export PYTHONPATH=.
           if [ -d "tests" ] && [ "$(ls -A tests)" ]; then 
             pytest -v --tb=short || exit 0
           else 
